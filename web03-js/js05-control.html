@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        button{
+            width:100px
+        }
+    </style>
+
+    <script>
+        function ifTest(){
+            var i = prompt('1 or 2')
+            if (i==1){
+                alert('1')
+            } else if (i==2){
+                    alert('2')
+            }else{
+                alert('another number')
+
+            }
+        }
+        function switchTest(){
+            var season = prompt('봄 여름 가을 겨울')
+            switch(season){
+                case '봄':
+                    alert('봄에는 진해군항제')
+                    //break;
+                case '여름':
+                    alert('여름은 바다')
+                    break;
+                case '가을':
+                    alert('가을엔 단풍')
+                    //break;
+                case '겨울':
+                    alert('겨울엔 스키장')
+                    break;
+                default:
+                    alert('봄, 여름, 가을, 겨울 중 하나로!')
+
+
+            }
+        }
+
+        function forTest(){
+            //초기값 ; 조건식 ; 증감식
+            for (var i=0 ; i <10 ; i++){
+                console.log(i)
+            }
+            // 구구단
+            for (var i=2 ; i <10 ; i++){
+                for (var j=1 ; j<10; j++){
+                    console.log(i +'*'+ j+'='+(i*j) )
+                }
+                
+            }
+        }
+        
+        function whileTest(){
+            var i = 9;
+            while( i>1){
+                //console.log(i)
+                //i++
+                //i=i+1
+               // console.log(i++)
+               //console.log(++i)
+               /*
+               증감연산자 (++ / --)
+               변수++ : 변수의 값을 리턴한 뒤, 연산
+               ++변수 : 연산을 먼저하고, 변수의 값을 리턴 
+               */
+              var j=9
+              while(j>0){
+                console.log(i +'*'+ j+'='+(i*j) )
+                j--
+              }
+              i--
+            }
+            var j =10
+            do{
+                console.log(j)
+                j--
+            }while(j>0)
+        }
+
+
+    </script>
+</head>
+<body>
+    
+    <button onclick="ifTest()">IF</button>
+    <br>
+    <button onclick="switchTest()">SWITCH</button>
+    <br>
+    <button onclick="forTest()">FOR</button>
+    <br>
+    <button onclick="whileTest()">WHILE</button>
+
+</body>
+</html>

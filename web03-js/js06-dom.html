@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function searchQS(){
+            // //querySelector("css 선택자")--> node
+            // var doc = document.querySelector("#test")
+            // console.log(doc)
+
+            //querySelectorAll("css 선택자") -> NodeList
+            var doc = document.querySelectorAll("#test")[0]
+            //console.log(doc)
+            doc.innerHTML = "querySelectorAll(css 선택자)"
+        }
+
+        function searchID(){
+            var doc = document.getElementById('test')
+            //console.log(doc)
+            doc.innerHTML='id속성으로 탐색'
+            doc.style.color='red'
+        }
+        function searchName(){
+            //nodelist
+            var doc = document.getElementsByName('test02')
+            //console.log(doc)
+            doc[1].value = 'name으로 탐색'
+        }
+
+        function searchTag(){
+            var doc = document.getElementsByTagName('p')
+            doc[3].innerHTML = 'tag이름으로 탐색'
+        }
+
+
+
+    </script>
+</head>
+<body>
+    
+    <p onclick="searchQS()">DOM 탐색 메서드(Document Object Model)</p>
+
+    <p id='test' onclick='searchID()'>1. 엘리먼트의 id로 탐색 : 엘리먼트 하나를 선택(중복불가) - 반환 : 값하나 (Node)</p>
+
+    <p onclick="searchName()">2. 엘리먼트의 name으로 탐색 : 엘리먼트를 여러개 선택 - 반환 : 배열(NodeList) <br>
+        <input type="text" name="test02" value=""><br>
+        <input type="text" name="test02" value=""><br>
+        <input type="text" name="test02" value=""><br>
+    </p>
+    <p onclick="searchTag()">3. 엘리먼트의 태그 이름으로 탐색 : 엘리먼트를 여러개 선택 - 반환 : 배열(NodeList)</p>
+</body>
+</html>
