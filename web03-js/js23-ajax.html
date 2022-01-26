@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ajaxTest(){
+            var xhr = new XMLHttpRequest()
+
+            xhr.onreadystatechange = function(){
+                // 4:요청의 완료
+                if(xhr.readyState ==4 ){
+                    // 200 : 정상응답
+                    if(xhr.status ==200){
+                        //alert(xhr.responseText)
+                        var respXml = xhr.responseXML
+                        
+                        var table = document.getElementById('tb')
+                        var rows = respXml.getElementsByTagName('ROW')
+                        //console.log(rows)
+
+                        // 1. column 이름 만들기
+                        var columnTr = document.createElement("tr")
+                        for (var i =0;i<rows[0].children.length;i++){
+                            //console.log(rows[0].children[i].nodeName)
+                            var th = document.createElement("th")
+                            var txt = document.createTextNode(rows[0].children[i].nodeName)
+                            th.appendChild(txt)
+
+                            columnTr.appendChild(th)
+                        }
+                        table.appendChild(columnTr)
+
+                        // 2. data 만들자
+                        for (var i =0 ; i<rows.length;i++){
+                            var tr=document.createElement("tr")
+                            for(var j=0; j<rows[i].children.length;j++){
+                                var td = document.createElement("td")
+                                td.appendChild(document.createTextNode(rows[i].children[j].textContent))
+                                tr.appendChild(td)
+                            }
+                            table.appendChild(tr)
+                        }
+
+
+
+                        
+                        // var idList=respXml.getElementsByTagName("EMPLOYEE_ID")
+                        // var nameList = respXml.getElementsByTagName("LAST_NAME")
+                        // var emailList = respXml.getElementsByTagName("EMAIL")
+                        // var phoneList = respXml.getElementsByTagName("PHONE_NUMBER")
+                        // var dateList = respXml.getElementsByTagName("HIRE_DATE")
+                        
+                        
+                        // // console.log(respXml)
+                        // // console.log(typeof(respXml))
+                        // for(var i = 0; i < idList.length; i++) {
+                        //     var vals = [idList[i].childNodes[0].nodeValue, nameList[i].childNodes[0].nodeValue,
+                        //     emailList[i].childNodes[0].nodeValue, phoneList[i].childNodes[0].nodeValue, dateList[i].childNodes[0].nodeValue]
+                        //     document.getElementById("addtr").appendChild(createRow(vals))
+                        // }
+                    }
+                }
+            }
+            //get방식으로 요청, 해당 경로에
+            xhr.open('GET','emplist.xml')
+            xhr.send()
+        }
+        
+
+        // function createRow(vals){
+        //     var tr = document.createElement("tr")
+
+        //     for (var i =0;i<vals.length; i++){
+        //         var td = document.createElement("td")
+        //         td.textContent = vals[i]
+        //         tr.appendChild(td)
+        //     }
+
+        //     return tr
+        // }
+
+    </script>
+</head>
+<body>
+    <!--
+        ajax : Asyschronous Javascript And Xml
+        비동기 통신
+    -->
+
+
+    <button onclick="ajaxTest()">ajax</button>
+    <table id="tb" border='1'></table>
+
+    <!-- <table id="tb" border = "1">
+            <col width='200px'>
+            <col width='200px'>
+            <col width='300px'>
+            <col width='200px'>
+            <col width='200px'>
+            <thead>
+                <tr>
+                    <th>EMPLOYEE_ID</th>
+                    <th>LAST_NAME</th>
+                    <th>EMAIL</th>
+                    <th>PHONE_NUMBER</th>
+                    <th>HIRE_DATE</th>
+                </tr>
+            </thead>
+            <tbody id="addtr"></tbody>
+    </table> -->
+</body>
+</html>

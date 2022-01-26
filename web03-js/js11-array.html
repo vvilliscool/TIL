@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var arrayObj = new Array()   //   ___  : object 타입
+        var arrayLiteral = ['v1','v2',3,4]
+
+        var arrayObj02 = new Array(5)    //  ,,,, 출력 : 5개의 공간이 있다
+
+        var arrayObj03 = new Array(1,2,3,4,5)  // 1,2,3,4,5 출력
+
+        // onload=function(){
+        //     alert(arrayObj03[1])
+        //     // alert(typeof(arrayObj02[1]))    //undefined
+        // }
+
+        function multiArr(){
+            var len =3
+            var arr = new Array(len)
+
+            for(var i=0; i < arr.length; i++){
+                arr[i] = new Array(len)
+            }
+            arr[0][0] = '수박'
+            arr[0][1] = '딸기'
+            arr[0][2] = '키위'
+
+            arr[1][0]=1
+            arr[1][1]=2
+            arr[1][2]=3
+
+            arr[2][0]=['lol','wow']
+            arr[2][1]=['python','numpy','pandas']
+            arr[2][2]=['javascript', ['function']]
+
+            arr[1][2] = 9
+
+            // alert(arr)
+            // function  -> jquery
+            arr[2][2][1][0]='jquery'
+            alert(arr.toString())
+        }
+
+        function joinTest(){
+            var nums = ['1','2',3,4,'5']
+            var res = nums.join('+')
+            //alert(res)
+            alert(eval(res))
+        }
+
+        function sortTest01(){
+            var arr = ['a','d','b','c']
+            alert(arr)
+            arr.sort()
+            alert(arr)
+        }
+
+        function sortTest02(){
+            // ascii code 순으로 정렬된다.
+            var arr = [1,2,6,11,3,65,21]
+            alert(arr)
+            arr.sort()
+            alert(arr)
+        }
+
+        function compareNum(a,b){
+            /*
+                1 : a가 크다
+                0 : a==b
+               -1 : a가 작다
+            */
+            return a-b
+        }
+
+        function reverseTest(){
+            var arr = [19,2,3,6,22,100]
+            arr.sort(compareNum)
+            arr.sort(function(a,b){return a-b})
+            arr.reverse()
+            alert(arr)
+        }
+
+        function pushAndShift(){
+            var queue = new Array()
+
+            queue.push("first")
+            queue.push("second")
+            queue.push("third")
+
+            alert(queue)
+
+            var a = queue.shift()   // 앞에서 뺌
+            alert(a)
+            alert(queue)
+
+            queue.push('4th')
+            alert(queue)
+
+            var b = queue.pop()   // 뒤에서 뺌
+            alert(b)
+            alert(queue)
+        }
+
+        function sliceTest(){
+            var arr01 = new Array(1,2,3,4,5,6,7)
+            var slice01 = arr01.slice(1,3)
+            // alert(slice01)
+
+            var arr02 = new Array(4)
+            arr02[0] = new Array(1,2)
+            arr02[1] = new Array(3,4)
+            arr02[2] = new Array(5,6)
+            arr02[3] = new Array(7,8)
+
+            var slice02 = arr02.slice(1,3)
+            //alert(slice02)
+
+            slice02[0][0] =33
+            alert(arr02)
+            
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <h1>배열 (객체)</h1>
+
+    <ul>
+        <li onclick="multiArr()">다중 배열</li>
+        <li onclick="joinTest()">Join 함수</li>
+        <li>배열 정렬
+            <ul>
+                <li onclick='sortTest01()'>sort() : 문자 정렬</li>
+                <li onclick='sortTest02()'>sort() : 숫자 정렬</li>
+                <li onclick="reverseTest()">reverse() : 거꾸로 정렬</li>
+            </ul>
+        </li>
+        <li onclick="pushAndShift()">배열 Queue
+            <ul>
+                <li>push()</li>
+                <li>shift()</li>
+                <li>pop()</li>
+            </ul>
+        </li>
+
+        <li onclick="sliceTest()">slice() : 배열의 부분을 가지고 새로운 배열 생성</li>
+    </ul>
+</body>
+</html>
