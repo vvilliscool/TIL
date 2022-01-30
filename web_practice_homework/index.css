@@ -1,0 +1,813 @@
+html{font-size: 20px;}
+body{font-size: 1rem;}   /*반응형 만들려면 1rem으로 변환해서 사용*/
+
+ul{ /* 점 없애기, 들여쓰기 없애기*/
+    list-style: none;
+    padding-left: 0px;
+}
+
+a{   /* 링크의 밑줄 없애기 */ 
+    text-decoration-line: none;
+}
+
+/*----------------------------------------*/
+body{padding-top: 6.1rem;}
+header {
+    background: linear-gradient(#f6f5ef 6.1rem,#2C2A29 6.1rem,#2C2A29 26.4rem);
+    height: 6rem;
+    overflow: hidden;
+    border-top: 2px solid #000;
+    position: absolute;
+    transition:height 0.4s;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index:6;
+}
+header > div{
+    position: relative;
+    width: 54.5rem;
+    margin: 0 auto;
+}
+/*아래의 div를 float해놔서 배경색이 흰색으로 나옴
+--> 배경색 넣기 위해 :after 작성*/
+header > div:after {content: "";display: block;clear: both;}
+
+/* 로고 이미지 위아래 여백 padding*/
+header > div h1 {float : left; padding: 1.1rem 0 1.2rem;}
+
+/*네이게이션 메뉴 위치 내리는 여백 padding */ 
+header > div nav { float: right; padding: 2.65rem 0 0 0;}
+header > div nav > ul > li {float: left;position: relative;line-height: 0.8rem;}
+
+header > div nav > ul > li > a {
+    display: block;   /*위아래 padding때문에 좌우여백이 안들어가지므로 */
+    padding : 0.7rem 1.25rem 0;  /*메뉴마다 좌우 여백 */
+    height : 2.6rem;    /*메뉴 아래 영역까지 포함시키도록 */
+    font-size: 0.7rem;
+    color: #333333;
+    line-height: 100%;
+}
+
+nav > ul > li ul{width:100%; position: absolute;font-size: 0.62rem;}
+nav > ul > li ul li{white-space:nowrap;font-weight: 370;}
+nav > ul > li ul li h2{font-weight: 380;font-size:0.7rem; color: white;
+    padding-top: 1.1rem;padding-bottom: 0.7rem;}
+nav > ul > li ul li li{line-height: 1.1rem;font-weight: 440; width: 5rem;}
+
+nav > ul > li ul .coffee{position: absolute;left:-16rem}
+nav > ul > li ul .similar{position: absolute;left:-5rem}
+nav > ul > li ul .sb_reserve{position: absolute;left:6rem}
+nav > ul > li ul .espresso{position: absolute;left:17rem}
+nav > ul > li ul .best{position: absolute;left:28rem}
+nav > ul > li ul .story{position: absolute;left:-16rem;top: 11rem;}
+nav > ul > li ul .bottomline{position: absolute;top:21.5rem;left: -16rem;}
+nav > ul > li ul .bottomline .green{color: rgb(69, 153, 30);}
+
+
+header > div .spot {
+    position: absolute;
+    right:2.25rem; top: 0.28rem;
+}
+header > div .spot li{float : left; position: relative;}  /*기준잡기*/
+header > div .spot li a {
+    padding: 0 0.75rem;  /* 상단 메뉴 사이의 bar 용 여백 */
+    font-size: 0.67rem;
+    color: #555555;
+    line-height: 100%;
+}
+
+/* li~li : li 사이에 */
+/* 상단 메뉴 사이의 bar만들기 */
+header > div .spot li ~ li a:after{   
+    content: "";
+    position: absolute;
+    left: 0; top: 50%;
+    width: 1px;
+    height: 0.6px;
+    background: #e5e5e5;
+    transform: translateY(-25%); /* 가운데부터 정렬*/
+}
+
+header > div .spot li:last-child a:after{   /* 검색 부분 bar 삭제*/
+    display: none;
+}
+
+/* 아이콘 넣으므로 '검색'글자 없애기' */
+header > div .spot li:last-child a{
+    display: block;
+    padding: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 1.7rem;
+    font-size: 0;
+    color: transparent;
+    border-radius: 0.25rem;
+}
+
+/* 검색 돋보기 */
+header > div .spot li:last-child a::before{
+    content: "\e97a";
+    font-family: 'xeicon';
+    font-size: 1.2rem;
+    color: black;
+}
+
+
+
+
+/* main visual 부분*/
+.main_visual{
+    background: url('img/main_background.PNG') no-repeat center top;
+}
+.main_visual > div{
+    
+    left: 0; right: 0;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: 32.4rem;
+    margin: 0 auto;
+}
+.main_visual > div div{position: absolute;}
+
+.main_visual > div .main_back{left: 12rem; top: 2.8rem; z-index: 3;}
+.main_visual > div .main_back img{ /*count on luck*/
+    display: block;
+    padding: 0 0 2.3rem;
+}
+.main_visual > div .main_back a{
+    position: relative;
+    left: 4rem;
+    display: inline-block;
+    width: 6rem;
+    border: 2px solid #4F7161;
+    text-align: center;
+    line-height: 1.7rem;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #4F7161;
+}
+.main_visual > div .img1 {left: 19.5%; top: 12.9rem; z-index: 0;}
+.main_visual > div .img2 {left: 42%; top: 5.9rem;}
+.main_visual > div .img3 {left: 71%; top: 9.3rem; z-index: 3;}
+
+
+
+/* 공지사항 */
+.notice{
+    background: linear-gradient(to right, black,black 56%,white 56%, white);
+}
+.notice > div{
+    position: relative;
+    width: 54.5rem;
+    height: 2.8rem;
+    margin: 0 auto;
+}
+
+.notice .notice_left{
+    display: table;
+    position: absolute;
+    padding: 0 0 0 2.2rem;
+    width: 10rem;
+    height: 10.5rem;
+    float: left;
+}
+
+.notice .notice_left h2{
+    display: table;
+    position: absolute;
+    padding: 0 0 0 1rem;
+    width: 10rem;
+    height: 2.2rem;
+    float: left;
+}
+
+.notice .notice_contents .notice_txt a{
+    position: absolute;
+    top: 0.8rem;
+    left: 8rem;
+    width: 21rem;
+    height: 3rem;
+    font-size: 0.7rem;
+    color: white;
+}
+.notice .notice_contents .notice_plus img{
+    width: 1.8rem;
+}
+
+.notice .notice_right{
+    top:50%;
+}
+
+.notice .notice_contents .notice_plus{
+    position: relative;
+    left: 27rem;
+    top: 0.5rem;
+}
+
+
+.notice .notice_right .promo p{
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 500;
+    top: 0.6rem;
+    right: 1.5rem;
+    float: right;
+}
+.notice .notice_right .promo img{
+    position: relative;
+    padding-left: 3rem;
+    display: inline-block;
+}
+*/
+.notice div::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* 여기서부터 REWARDS 부분 */
+.rewards {
+    background-color:#1e3932;
+}
+.rewards > div{
+    position: relative;
+    width: 54.5rem;
+    margin: 0 auto;
+}
+.rewards div::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* reward 로고부분 */
+.rewards h2{
+    display: table;
+    position: absolute;
+    padding: 0 0 0 2.2rem;
+    width: 10rem;
+    height: 10.5rem;
+    float: left;
+}
+
+.rewards h2 img {
+    width: 9rem;
+    height: 8rem;
+}
+
+.rewards h2 span{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/* reward 글 부분 */
+.rewards .rewards_info{
+    padding: 1.7rem 2rem 0 13rem;
+    height: 12.1rem;
+    box-sizing: border-box;
+}
+
+.rewards .rewards_info span{
+    display: block;
+    padding: 0 0 0.8rem;
+    font-size: 1.1rem;
+    color: white;
+    line-height: 100%;    /* 줄간격 초기화 */
+    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+}
+.rewards_info .rewards_contents {
+    position: relative; 
+    margin-bottom: 22px; 
+    border-bottom: 1px solid #4b615b;
+    padding: 0 0 0.7rem;
+}
+.rewards_info .rewards_gift p{
+    clear: both;
+    font-size: 0.72rem;
+    color: white;
+}
+
+.rewards_info .rewards_contents p{
+    font-size: 0.85rem;
+    color: white;
+    line-height: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+
+.rewards .left{float: left;}
+.rewards .right{float: right;}
+
+.btn{
+    display: inline-block;
+    min-width: 4.7rem;
+    height: 1.9rem;
+    line-height: 1.7rem;
+    font-size: 0.7rem;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.btn.type1{
+    background-color: #00704A;
+    border: 2px solid #00704A;
+}
+
+.rewards_gift .btn{
+    width: 9.75rem;
+}
+
+.rewards .top_btn{
+    padding:2.2rem 0 0;
+}
+
+
+/* beans 부분 */
+.beans{
+    background: url('img/beans_bg.PNG') no-repeat center top;   
+}
+.beans > div{
+    position: relative;
+    width: 54.5rem;
+    margin: 0 auto;
+    height: 27.5rem;
+}
+.beans div::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* beans 이미지 부분 */
+.beans h2{
+    display: table;
+    position: relative;
+    padding: 4rem 0 2.2rem;
+    width: 10rem;
+    height: 10.5rem;
+    left: 7.6rem;
+    float: left;
+}
+
+.beans h2 span{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* beans 글 부분 */
+.beans .beans_txt{
+    position: relative;
+    padding: 1.7rem 2rem 0 13rem;
+    height: 12.1rem;
+    top: 28%;
+    left: 20.5%;
+}
+
+.beans_btn{
+    display: inline-block;
+    position: absolute;
+    right: 30rem;
+    top: 10rem;
+    min-width: 6.5rem;
+    height: 1.9rem;
+    line-height: 1.7rem;
+    font-size: 0.7rem;
+    color: #453D3D;
+    border: 2px solid #453D3D;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* reserve 부분 */
+.reserve{
+    background: url('img/reserve_bg.PNG') no-repeat center top;   
+}
+.reserve > div{
+    position: relative;
+    width: 54.5rem;
+    margin: 0 auto;
+    height: 20rem;
+}
+.reserve div::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* reserve 이미지 부분 */
+.reserve h2{
+    display: table;
+    position: absolute;
+    padding: 4rem 0 2.2rem;
+    width: 10rem;
+    height: 8rem;
+    left: 0.3rem;
+    top: 0.5rem;
+    float: left;
+}
+
+.reserve h2 span{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.reserve_btn{
+    display: inline-block;
+    position: absolute;
+    left: 14rem;
+    top: 13rem;
+    min-width: 6rem;
+    height: 1.9rem;
+    line-height: 1.7rem;
+    font-size: 0.7rem;
+    color: #b9813e;
+    border: 2px solid #b9813e;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* pick 부분 */
+.pick{
+    background: url('img/pick_bg.PNG') no-repeat center top;   
+}
+.pick > div{
+    position: relative;
+    width: 54.5rem;
+    margin: 0 auto;
+    height: 35rem;
+}
+.pick div::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* pick 글 부분 */
+.pick .pick_txt1{
+    position: relative;
+    padding: 1.7rem;
+    top: 3rem;
+    left: 6.5%;
+}
+.pick .pick_txt2{
+    position: relative;
+    height: 9rem;
+    top: 15rem;
+    left: -19.5rem;
+}
+
+/* pick 이미지 부분 */
+.pick h2{
+    display: table;
+    position: absolute;
+    width: 10rem;
+    height: 10.5rem;
+    top: 6.6rem;
+    right: -5.2rem;
+    float: right;
+}
+
+.pick h2 span{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.pick_btn{
+    display: inline-block;
+    position: absolute;
+    left: 11.3rem;
+    bottom: 5rem;
+    min-width: 6.5rem;
+    height: 1.9rem;
+    line-height: 1.7rem;
+    font-size: 0.7rem;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* magazine 부분 */
+.magazine{
+    background: url('img/magazine_bg.PNG') no-repeat center top;   
+}
+.magazine > div{
+    position: relative;
+    width: 54.5rem;
+    margin: 0 auto;
+    height: 20rem;
+}
+.magazine div::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* magazine txt 부분 */
+.magazine h2{
+    display: table;
+    position: relative;
+    padding: 4rem 0 2.2rem;
+    width: 10rem;
+    height: 10.5rem;
+    left: 2.5rem;
+    float: left;
+}
+
+.magazine h2 span{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* magazine 오른쪽 부분 */
+.magazine .magazine_right img{
+    position: relative;
+    height: 18.8rem;
+    left: 9.5%;
+}
+
+.magazine_btn{
+    display: inline-block;
+    position: absolute;
+    left: 16rem;
+    top: 13.5rem;
+    min-width: 6.5rem;
+    height: 1.9rem;
+    line-height: 1.7rem;
+    font-size: 0.7rem;
+    color: #453D3D;
+    border: 2px solid #453D3D;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* store 부분*/
+.store{
+    background: url('img/store_bg.PNG') no-repeat center top;
+    
+}
+.store > div{
+    position: relative;
+    width: 100%;
+    max-width: 54.5rem;
+    height: 20.15rem;
+    margin: 0 auto;
+}
+.store > div div{position: absolute;}
+
+.store > div .main_back{left: 1.25rem; top: 2.8rem; z-index: 3;}
+.store > div .main_back img{
+    display: block;
+    padding: 0 0 2.3rem;
+}
+.store > div .main_back a{
+    position: relative;
+    left: 4rem;
+    display: inline-block;
+    width: 6rem;
+    border: 2px solid #4F7161;
+    text-align: center;
+    line-height: 1.7rem;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #4F7161;
+}
+.store > div .img1 {left:3.3rem}
+.store > div .img2 {left: 14.8rem; top: 7.5rem;  z-index: 1;}
+.store > div .img3 {
+    position:relative;left: 32.7rem; top: 5rem; z-index: 3;}
+.store > div .img4 {
+    position:relative;left: 32.7rem; top: 5.7rem; z-index: 3;}
+.store > div .img5 {
+    position:relative;left: 46.3rem; top: 9.3rem; z-index: 3;}
+
+.store_btn{
+    display: inline-block;
+    position: absolute;
+    left: 33rem;
+    top: 13rem;
+    min-width: 6.5rem;
+    height: 1.9rem;
+    line-height: 1.7rem;
+    font-size: 0.7rem;
+    color: #453D3D;
+    border: 2px solid #453D3D;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* footer 부분 */
+
+footer {
+    background:#2C2A29;
+    position:relative;
+    width:100%;
+    box-sizing: border-box;
+}
+
+
+footer .footer_top{
+    background: url('img/footer_logo.png') right 8px no-repeat;
+    display:inline-block;
+    left:56.5%; position:relative; 
+    top: 2rem;
+    height: 14rem;
+}
+footer .footer_top .row{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    top: 2rem;
+}
+
+.top ul{
+    list-style: none;
+}
+
+.footer_col{
+    position: absolute;
+    left: -35rem;
+    top: -1.8rem;
+    width: 30%;
+    padding: 0.4rem 0.8rem;
+}
+
+.footer_col.t2{
+    position: relative;
+    left: -23.5rem;
+}
+.footer_col.t3{
+    position: relative;
+    left: -21rem;
+    top: -1.8rem;
+}
+
+.footer_col.t4{
+    position: relative;
+    left: -1.5rem;
+    top: -5rem;
+}
+.footer_col.t5{
+    position: relative;
+    left: 0.5rem;
+    top: -5rem;
+}
+
+.footer_col h4 a{
+    font-size: 0.72rem;
+    margin-bottom: 1.5rem;
+    position: absolute;
+    color: white;
+    font-weight:400;
+    letter-spacing: 0.02rem;
+}
+
+.footer_col ul li a{
+    position: relative;
+    top: 1.6rem;
+    font-size: 0.63rem;
+    padding: 0 0 0.3rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    transition: all 0.3 ease;
+}
+
+
+footer .footer_middle{
+    position: relative;
+    clear: both;
+    top: 0.8rem;
+    background-color: #282828;
+    width: 100%;
+    height: 4.8rem;
+}
+
+footer .footer_middle{position: relative;}
+
+footer  .footer_middle .img1{
+    clear: both;
+    position: relative;
+    left: 8.4rem;
+    top: 0.75rem;
+    display: inline-block;
+    width: 6rem;
+}
+footer  .footer_middle .img2 {
+    position: absolute;left: 16.3rem; top: 0.75rem; }
+footer  .footer_middle .img3 {
+    position: absolute;left: 24rem; top: 0.75rem;width: 7rem;}
+footer  .footer_middle .img4 {
+    position: absolute;left: 33.05rem; top: 0.75rem;}
+footer  .footer_middle .img5 {
+    position: absolute;left: 45.8rem; top: 0.75rem;}
+footer  .footer_middle .img6 {
+    position: absolute;left:58.5rem; top: 0.75rem}
+
+
+footer .footer_bottom{
+    clear: both;
+    position: relative;
+    width: 100%;
+    height: 12rem;
+    background-color: #2C2A29;
+    font-size: 0.45rem;
+}
+
+
+.footer_contract {
+    position: absolute;
+    left:15.7%; top: 1.6rem;
+}
+.footer_contract li{float : left; position: relative;}  /*기준잡기*/
+.footer_contract li a {
+    padding: 0 0.6rem;  /* 상단 메뉴 사이의 bar 용 여백 */
+    font-size: 0.6rem;
+    color: white;
+    line-height: 100%;
+}
+
+.footer_contract .personal{
+    color: #00B050;
+}
+
+
+/* li~li : li 사이에 */
+/* 상단 메뉴 사이의 bar만들기 */
+.footer_contract li ~ li a:after{   
+    content: "";
+    position: absolute;
+    left: 0; top: 30%;
+    width: 1px;
+    height: 0.7rem;
+    background: gray;
+    transform: translateY(-25%); /* 가운데부터 정렬*/
+}
+
+
+.footer_btn{
+    display: inline-block;
+    position: relative;
+    left: 28rem;
+    top: 3rem;
+    min-width: 5.5rem;
+    height: 1.6rem;
+    line-height: 1.5rem;
+    font-size: 0.64rem;
+    color: white;
+    border: 1.7px solid white;
+    border-radius: 3px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.footer_btn.type1{
+    position: absolute;
+    left:29rem;
+}
+.footer_btn.type2{
+    position: absolute;
+    left:35rem;
+}
+.footer_btn.type3{
+    position: absolute;
+    left:41rem;
+}
+
+
+.company_info>li{
+    float : left; position: relative;
+    padding: 0.4rem;
+    left: 19rem;
+    top: 5.5rem;
+    font-size: 0.65rem;
+}
+
+.company_rights{
+    position: relative;
+    top: 7.7rem;
+    right: 8.4rem;
+    font-size: 0.65rem;
+}
